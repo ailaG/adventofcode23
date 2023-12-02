@@ -2,7 +2,7 @@
 
 import { getInput } from './helpers.mjs';
 
-const input = getInput('./input1.txt').split('\n');
+const input = getInput('./input.txt').split('\n');
 
 console.log('Input:',input);
 

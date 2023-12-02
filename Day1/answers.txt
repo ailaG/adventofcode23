@@ -1,1 +1,5 @@
-Example: 142
+Example1: 142
+Input1: 54419
+
+Example2: 281
+Input2: 54728
