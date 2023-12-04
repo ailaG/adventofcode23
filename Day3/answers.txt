@@ -1,0 +1,6 @@
+Example 1: 4361
+Part 1: 525119
+
+Example 2: 467835
+Part 2: 76504829
+
