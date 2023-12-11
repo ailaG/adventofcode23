@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "main": "later",
   "scripts": {
-    "file": "npx tsx"
+    "file": "npx tsx",
+    "part1": "npx tsx part1",
+    "part2": "npx tsx part2"
   },
   "author": "ailaG <aoc23@ailag.net>",
   "license": "ISC",
