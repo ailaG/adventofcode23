@@ -1,0 +1,5 @@
+Example 1 : 288 
+Part 1: 3317888
+
+Example 2: 71503
+Part 2: 24655068
