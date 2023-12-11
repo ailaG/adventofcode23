@@ -1,4 +1,4 @@
 Example 1 : 35 
 Part 1: 424490994
 Example 2: 46
-Part 2:
+Part 2: 15290096 (I THINK)
