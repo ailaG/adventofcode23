@@ -80,7 +80,6 @@ while (input.length > 0) {
 }
 
 
-console.log("START CONVERTING"); 
 
 function convertIds(idRange:range, conversionsR) {
 	// assumptions: conversion sources don't overlap
@@ -89,11 +88,9 @@ function convertIds(idRange:range, conversionsR) {
 	let currIds:range|null = idRange; // I'll eat at its beginning
 	let currConversion = null;
 	// before source start
-	console.log('convert', idRange, conversions.length);
 	while (conversions.length > 0) {
 		if (!currConversion || !currIds ||  currConversion.source.end < currIds.start)
 			currConversion = conversions.shift();
-		//if (currIds === null) console.log('currIds null');
 		if (currIds === null) continue;
 		if (!currConversion) throw 'wat';
 
@@ -101,15 +98,12 @@ function convertIds(idRange:range, conversionsR) {
 		
 		if (currSource.end < currIds.start) {
 			// too small, let's get a higher one
-			//console.log('* source end < ids start, skipping');
 			continue;
 		}
-		console.log('doing source',currSource, 'ids', currIds, 'target', currConversion.target);
 
 		if (currSource.start > currIds.end) {
 			// source > everything
 			// so all remaining ids are identity
-			console.log('* source start > ids end, pushing', currIds);
 			result.push(currIds);
 			if (currIds.end < currIds.start) throw 'wtf end<start';
 			currIds = null;
@@ -117,7 +111,6 @@ function convertIds(idRange:range, conversionsR) {
 		}
 
 		if (currSource.start == currIds.start && currSource.end == currIds.end) {
-			console.log('* source > everything, so push  everything', currIds);
 			result.push(currIds);
 			if (currIds.end < currIds.start) throw 'wtf end<start';
 			currIds = null;
@@ -130,7 +123,6 @@ function convertIds(idRange:range, conversionsR) {
 			end: (currSource.end <= currIds.end) ? currSource.end : currIds.end
 		}
 		const delta = currConversion.target.start - currConversion.source.start;
-		console.log('* match',match,  'delta', delta);
 
 		if (match.end < match.start ) throw 'wtf1';
 		
@@ -138,13 +130,11 @@ function convertIds(idRange:range, conversionsR) {
 		const before:range = { start: currIds.start, end: match.start - 1 };
 		if (before.start <= before.end) {
 			result.push(before)
-			console.log('* before went in', before)
 		}
 
 		// match goes in
 		result.push({ start: match.start + delta, end: match.end + delta })
 		if (match.end < match.start) {
-			console.log('match BAD', match);
 			throw '';
 		}
 		if (match.end == currIds.end) {
@@ -195,7 +185,6 @@ typesKeys.forEach(key => {
 			throw 'no conversions???'
 		}
 			const res:range[]|undefined = convertIds(ids, currConversions);
-		console.log('processed, got', res);
 		if (res)
 			results = results.concat(res);
 	});
@@ -204,7 +193,7 @@ typesKeys.forEach(key => {
 });
 
 
-console.log('results', results);
+//console.log('results', results);
 console.log('result!!', results[0]['start']);
 
 
